@@ -35,25 +35,12 @@ if (Sys.getenv("JAVA_HOME")!="")
   Sys.setenv(JAVA_HOME="")
 
 priceMerge = merge(banana_production_price,market_banana,by.x='date',all.x=TRUE)
-priceMergeV2 = merge(priceMerge,price_index,by.x='date',all.x=TRUE)
-priceMergeV3 = merge(priceMergeV2,weather,by.x='date',all.x=TRUE)
-
-head(priceMergeV3.1)
-v = c(1,2,7,8,15,23)
-priceMergeV3.1 = priceMergeV3[,v]
-
-priceMergeV3.2 = na.omit(priceMergeV3[])
-  
 write.xlsx(priceMerge,file='priceMerge.xlsx')
 
 priceMerge2 = na.omit(priceMerge)
 write.xlsx(priceMerge2,file='priceMerge2.xlsx')
 str(priceMerge2)
 head(priceMerge2)
-
-
-
-
 
 
 str(weather)
