@@ -20,3 +20,18 @@ typhoon = sqlQuery(channel, "select * from typhoon");
 weather = sqlQuery(channel, "select * from weather");
 close(channel);
 
+head(banana_production_price)
+str(banana_production_price)
+
+
+head(market_banana)
+str(market_banana)
+market_banana
+
+
+
+library(RODBC);
+channel = odbcConnect("agriculture", uid="sa", pwd="passw0rd");
+market_banana = sqlQuery(channel, "select * from market_banana");
+close(channel);
+
