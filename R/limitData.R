@@ -93,7 +93,9 @@ for(i in 2003:2013){
   bindname = paste(i,'bindtemp2',sep="")  
   #設定每年區間
   bindname =  bindtemp[bindtemp$date>=startday & bindtemp$date<=enday,]
-  #處理空值-1成null
+  #處理空值成null
+  bindname$priceNovosti[bindname$priceNovosti==0] =NA
+  bindname$priceIshioka[bindname$priceIshioka==0] =NA
   bindname$air_temp[bindname$air_temp==-1] =NA
   bindname$dew_point[bindname$dew_point==-1] =NA
   #再把null值忽略掉
@@ -120,7 +122,8 @@ for(i in 2003:2013){
 }
 str(totalcondition)
 head(totalcondition)
-
+#write out
+write.xlsx(totalcondition,file='totalconditionBonkan.xlsx')
 
 
 
