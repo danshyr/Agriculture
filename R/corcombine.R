@@ -124,6 +124,6 @@ for(i in 1:nrow(coryear)){
 
 #¼g¥XÀÉ®×
 library(xlsx)
-write.xlsx(coryear,file='coryear2.xlsx')
+write.xlsx(coryear,file='coryear.xlsx')
 
 
