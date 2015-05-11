@@ -117,7 +117,8 @@ coryear = rbind(coryear,persimmonCorlationYear)
 #°j°é©R¦W
 str(coryear)
 for(i in 1:nrow(coryear)){
-  rownames(coryear)[i] = i+2003
+  names = paste(i+2003,'year',sep="")  
+  rownames(coryear)[i] = names
   
 }
 
