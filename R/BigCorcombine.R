@@ -92,9 +92,16 @@ plot(tempCor$year2004~tempCor$seq,
      type ="l"
 )
 
-points(x=bigCorpersimmon3$seq,y=bigCorpersimmon3$TempPrice,col='blue',type='l')
-#points(x=dataRawNormalizeponkan$date,y=dataRawNormalizeponkan$avg_price,col='red',type='l')
-#points(x=dataRawNormalizeponkan$date,y=dataRawNormalizeponkan$LonganProductionDaily,col='green',type='l')
+points(x=tempCor$seq,y=tempCor$year2005,col=6,type='l')
+points(x=tempCor$seq,y=tempCor$year2006,col=31,type='l')
+points(x=tempCor$seq,y=tempCor$year2007,col=56,type='l')
+points(x=tempCor$seq,y=tempCor$year2008,col=56,type='l')
+points(x=tempCor$seq,y=tempCor$year2009,col=81,type='l')
+points(x=tempCor$seq,y=tempCor$year2010,col=106,type='l')
+points(x=tempCor$seq,y=tempCor$year2011,col=131,type='l')
+points(x=tempCor$seq,y=tempCor$year2012,col=405,type='l')
+points(x=tempCor$seq,y=tempCor$year2013,col=454,type='l')
+points(x=tempCor$seq,y=tempCor$year2014,col=5-4,type='l')
 
 
 
