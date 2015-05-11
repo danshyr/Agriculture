@@ -52,15 +52,17 @@ for(j in 1:4){
 bigCorpersimmon[,36] = x
 colnames(bigCorpersimmon)[36] = 'year'
 
+bigCorpersimmon[,37] = seq(1,44,1)
+colnames(bigCorpersimmon)[37] = 'seq'
 
 library(xlsx)
 write.xlsx(bigCorpersimmon,file='bigCorpersimmon3.xlsx')
 
 
 str(bigCorpersimmon)
-plot(bigCorpersimmon$air_temp~bigCorpersimmon$date,
-     xlab = "date",
-     ylab = "air_temp",    
+plot(bigCorpersimmon$TempPrice~bigCorpersimmon$seq,
+     xlab = "seq",
+     ylab = "TempPrice",    
      type ="l"
 )
 #增加其他參數確認相關性
