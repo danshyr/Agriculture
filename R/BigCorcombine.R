@@ -1,4 +1,4 @@
-
+#將不同時間的係數整理並合併
 year = seq(1,41,4)
 month8 = seq(2,42,4)
 month5 = seq(3,43,4)
@@ -16,7 +16,7 @@ bigCorpersimmon[year,] = coryear
 bigCorpersimmon[month8,] = cormonth8
 bigCorpersimmon[month5,] = cormonth5
 bigCorpersimmon[month3,] = cormonth3
-
+#標示ROW而已
 for(i in year){
   names = paste(i,'year',sep="")  
   rownames(bigCorpersimmon)[i] = names
@@ -48,25 +48,51 @@ for(j in 1:4){
   x = rbind(x,i)
 }
 }
-
+#標記年分
 bigCorpersimmon[,36] = x
 colnames(bigCorpersimmon)[36] = 'year'
-
+#跑圖用的X軸
 bigCorpersimmon[,37] = seq(1,44,1)
 colnames(bigCorpersimmon)[37] = 'seq'
 
 library(xlsx)
 write.xlsx(bigCorpersimmon,file='bigCorpersimmon3.xlsx')
-
-
 str(bigCorpersimmon)
-plot(bigCorpersimmon$TempPrice~bigCorpersimmon$seq,
-     xlab = "seq",
+
+#####看所有的變化並合成一張表
+
+#起始合併黨
+bigCorpersimmontest = bigCorpersimmon[bigCorpersimmon$year==2004,1]
+str(bigCorpersimmontest)
+#將特定係數取出並用迴圈合併
+
+for(i in 2005:2014){  
+  bigCorpersimmon2 = bigCorpersimmon[bigCorpersimmon$year==i,1]
+  bigCorpersimmontest = cbind(bigCorpersimmontest,bigCorpersimmon2)
+}
+#重新命名COL
+for(i in 1:ncol(bigCorpersimmontest)){
+  names = paste('year',i+2003,sep="")  
+  colnames(bigCorpersimmontest)[i] = names
+  
+}
+#新增索引
+bigCorpersimmontest = cbind(bigCorpersimmontest,c(1,2,3,4))
+colnames(bigCorpersimmontest)[12] = 'seq'
+#寫成檔案
+write.xlsx(bigCorpersimmontest,file='bigCorpersimmontest.xlsx')
+#讀回檔案
+tempCor = read.xlsx(header=TRUE,file='bigCorpersimmontest.xlsx',sheetIndex=1)
+
+str(tempCor)
+#畫圖
+plot(tempCor$year2004~tempCor$seq,
+     xlab = "reference",
      ylab = "TempPrice",    
      type ="l"
 )
-#增加其他參數確認相關性
-#points(x=dataRawNormalizeponkan$date,y=dataRawNormalizeponkan$pricePeace,col='blue',type='l')
+
+points(x=bigCorpersimmon3$seq,y=bigCorpersimmon3$TempPrice,col='blue',type='l')
 #points(x=dataRawNormalizeponkan$date,y=dataRawNormalizeponkan$avg_price,col='red',type='l')
 #points(x=dataRawNormalizeponkan$date,y=dataRawNormalizeponkan$LonganProductionDaily,col='green',type='l')
 
