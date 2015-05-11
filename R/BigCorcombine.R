@@ -89,7 +89,8 @@ str(tempCor)
 plot(tempCor$year2004~tempCor$seq,
      xlab = "reference",
      ylab = "TempPrice",    
-     type ="l"
+     type ="l",
+     main='tempcor'
 )
 
 points(x=tempCor$seq,y=tempCor$year2005,col=6,type='l')
