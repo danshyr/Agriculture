@@ -114,10 +114,15 @@ persimmonCorlationYear = cbind(TempPrice,dew_pointPrice,RHPrice,precp_daPrice,wi
 coryear = rbind(coryear,persimmonCorlationYear)
 
 }
-
+#迴圈命名
 str(coryear)
+for(i in 1:nrow(coryear)){
+  rownames(coryear)[i] = i+2003
+  
+}
+
 #寫出檔案
 library(xlsx)
-write.xlsx(coryear,file='coryear.xlsx')
+write.xlsx(coryear,file='coryear2.xlsx')
 
 
